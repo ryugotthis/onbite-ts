@@ -1,0 +1,15 @@
+{
+  "name": "section1",
+  "version": "1.0.0",
+  "description": "basic ts",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "subin",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^22.14.0"
+  }
+}
