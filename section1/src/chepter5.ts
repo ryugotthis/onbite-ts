@@ -26,6 +26,7 @@ function func2(value: number | string | Date | null | Person) {
     console.log(value.toUpperCase()); // value 타입 string
   } else if (value instanceof Date) {
     // Date는 클래스
+    // instanceof: 어떤 객체가 특정 클래스(생성자 함수)의 인스턴스인지 확인할 때 사용
     console.log(value.getTime()); // value 타입 Date
   } else if (value && 'age' in value) {
     // null 이 아니면서 age 키가 있는것은 Person 타입 밖에없음!

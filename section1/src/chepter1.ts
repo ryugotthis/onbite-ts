@@ -30,7 +30,7 @@ let unde1: undefined = undefined;
 let numA: 10 = 10;
 let strA: 'hello' = 'hello';
 
-// 뱌열과 튜플
+// 배열과 튜플
 // 배열
 let numArr: number[] = [1, 2, 3];
 let strArr: string[] = ['hi', 'im', 'subin'];
@@ -103,7 +103,8 @@ let user2: User = {
   location: 'busan',
 };
 
-// 인덱스 시그니쳐 - 키와 값
+// 인덱스 시그니쳐 - 키와 값 => 명시적으로 특정 타입을 선언한 것이 아니라서
+// 1개든 100개든, 몇 개든 넣어도 타입은 만족
 type CountryCodes = {
   [key: string]: string;
 };
@@ -113,7 +114,7 @@ let example1: CountryCodes = {
 };
 
 // enum 타입
-// 여러가지 값들에 각각 일름을 부여해 열거해두고 사용하는 타입
+// 여러가지 값들에 각각 이름을 부여해 열거해두고 사용하는 타입
 // TS만 있는 타입이고 컴파일시 사라지지 않고 JS의 객체로 변환됨
 enum Role {
   ADMIN = 0,
@@ -132,6 +133,12 @@ const user33 = {
   name: 'Isis',
   role: Role.GUEST,
 };
+// enum 대신 객체로 정의
+const Role2 = {
+  ADMIN: 0,
+  USER: 1,
+  GUEST: 2,
+} as const;
 
 // any - 특정 변수의 타입으 우리가 확실히 모를 때
 let anyVar: any = 10;
@@ -156,23 +163,38 @@ if (typeof unKnownVar === 'number') num = unKnownVar; // 타입 정제시 가능
 function fun1(): string {
   return 'hello';
 }
+
+//이 함수는 결과가 중요하지 않다
+//이 함수는 실행되긴 하지만,리턴할 값과는 관계가 없다.
 function fun2(): void {
   console.log('hello');
 }
+// 정의되지 않음
+// 이 함수는 undefined를 명시적으로 반환한다
+// 리턴할 값이 있을수도있는데 없을때는 undefined로! null 보다 undefined가 흔히 쓰임
 function fun3(): undefined {
   console.log('hello');
   return; // return 만 쓰고 뒤에 생략 가능
 }
+// function findUserById(id: number): User | undefined {
+//   const user = db.find(u => u.id === id);
+//   return user; // 없으면 undefined 반환
+// }
+
+// 비어있음/의도적으로 없음, 직접 할당
 function fun4(): null {
   console.log('hello');
   return null; // return 뒤에 null을 꼭 써줘야 함
 }
 
+// 값을 무시한다, undefined만 void에 담을 수 있음
 let a: void;
 a = undefined;
 // a=null null 할당 안됨
 
 // never - 불가능한 타입, 어떤 변수도 못 담음
+// 값이 있을 수 없다
+// 함수에서도 반환 값이 존재 할 수 없음
 function fun5(): never {
   while (true) {}
 }

@@ -21,7 +21,9 @@ let dog = {
   color: 'grey',
   breed: '푸들',
 } as Dog; // 속성이 하나 더 있지만 오류 안남
+// 타입 단언(as)은 개발자가 책임지고 타입을 맞다고 우기는 거라서 -> 개발자가 책임짐
 
+// 반면에 직접 할당하면 에러남
 let dog1: Dog = {
   name: '이지스',
   color: 'grey',
@@ -34,6 +36,7 @@ let num2 = 10 as unknown; // 가능
 
 // const 단언 - 각 키값이 리터럴이됨!
 let num4 = 10 as const; // let이지만 const가 됨
+// num4 = 4 에러 리터럴 형식으로 num:10이됨 let은 그대로
 
 let cat = {
   name: '고양이',
